@@ -37,10 +37,21 @@ If you ever find yourself telling users “clone the repo, then modify `some_mod
 
 ## Installation
 
-Clone and install in editable mode:
+Clone it first using your preferred method:
 
 ```bash
-git clone https://github.com/<your-username>/python-bootstrapper.git
+# HTTPS
+git clone https://github.com/aslan-ng/python-bootstrapper.git
+
+# SSH
+git clone git@github.com:aslan-ng/python-bootstrapper.git
+
+# GitHub CLI
+gh repo clone aslan-ng/python-bootstrapper
+```
+
+Then, install in editable mode:
+```bash
 cd python-bootstrapper
 pip install -e .
 ```
