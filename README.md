@@ -8,6 +8,33 @@ A minimal Python package showing how to bootstrap and auto-discover local plugin
 - **Configurable filename** — pick any `<plugin_name>.py`.
 - **Pure stdlib** — no extra dependencies.
 
+## Why Bootstrap Plugins?
+
+Typical approaches to extensibility often require users to:
+
+1. **Fork the library** and edit core code.
+2. Sprinkle **`sys.path` hacks** or environment variables to point at their own modules.
+3. Add a heavy plugin framework with extra dependencies.
+
+The **bootstrapper** pattern solves these pain‑points by:
+
+* Giving you a **single drop‑in file** (`<plugin_name>.py`) that overrides behaviour—no need to touch the upstream package.
+* Avoiding path juggling by locating the plugin **relative to the script you actually run**, not the working directory.
+* Preventing **circular‑import errors** via an early, provisional binding.
+* Staying **dependency‑free**—everything is done with the Python standard library.
+
+## When is this useful?
+
+| Scenario | Benefit |
+|----------|---------|
+| Custom math/physics kernels in a simulation repo | Collaborators can add their own formulas without editing core code |
+| Data‑processing pipelines (ETL) | Drop a new `transform.py` to adjust business logic per deployment |
+| Classroom assignments | Instructors ship a locked framework; students implement only `solution.py` |
+| CLI tools with pluggable commands | Users add commands merely by shipping an extra file |
+| Rapid prototyping | Swap algorithms by switching which plugin file sits next to the script |
+
+If you ever find yourself telling users “clone the repo, then modify `some_module.py`,” consider adopting this lightweight bootstrapper instead.
+
 ## Installation
 
 Clone and install in editable mode:
