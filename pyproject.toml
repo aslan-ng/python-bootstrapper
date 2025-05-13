@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["package", "package.*"]
+
+[tool.setuptools.package-data]
+keepdelta = ["py.typed"]
+
+[project]
+name = "package"
+version = "0.1.0"
+description = "Testing Package"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    { name = "Aslan Noorghasemi", email = "me@aslan-ng.com" },
+]
+dependencies = []
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
