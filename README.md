@@ -19,12 +19,6 @@
 
 ## Why Bootstrap Plugins?
 
-Typical approaches to extensibility often require users to:
-
-1. **Fork the library** and edit core code.
-2. Sprinkle **`sys.path` hacks** or environment variables to point at their own modules.
-3. Add a heavy plugin framework with extra dependencies.
-
 The **bootstrapper** pattern solves these pain‑points by:
 
 * Giving you a **single drop‑in file** (`<plugin_name>.py`) that overrides behaviour—no need to touch the upstream package.
@@ -33,6 +27,11 @@ The **bootstrapper** pattern solves these pain‑points by:
 * Staying **dependency‑free**—everything is done with the Python standard library.
 
 ## When is this useful?
+
+- Needing a simple plugin capability in your Python project.
+- Small tools or projects where simplicity is key.
+- Educational, prototyping, or single-user tools.
+- Scenarios where you want users to customize behavior by simply editing or replacing a file.
 
 | Scenario | Benefit |
 |----------|---------|
@@ -92,8 +91,15 @@ which:
 
 
 ## Adapting to Your Own Project
-1. Change the package name (bootstrapper) to match your own module.
-2. Change package files and the base class name (Math) in `main.py` to your own.
-3. In `__init__.py`, change `plugin_name` in `_discover_local` function.
-4. Write `<plugin_name>.py` next to your script, subclassing your base class.
-5. Start using your customized package! In your entry-point, simply import your base class. The bootstrapper will swap in your subclass automatically.
+
+Typical approaches to extensibility often require users to:
+
+1. **Fork the library** and edit core code.
+2. Change the package name (bootstrapper) to match your own module.
+3. Change package files and the base class name (Math) in `main.py` to your own.
+4. In `__init__.py`, change `plugin_name` in `_discover_local` function.
+5. Write `<plugin_name>.py` next to your script, subclassing your base class.
+6. Start using your customized package! In your entry-point, simply import your base class. The bootstrapper will swap in your subclass automatically.
+
+## Limitations
+This is a minimalistic, intentionally simple approach to enable plugin capability by local file discovery. The bootstrapper expects a **single plugin file** (`<plugin_name>.py`) placed next to your script. All plugin classes inside the file must inherit from the base class, and they will be **merged automatically into a single class at runtime**. No error reporting is provided if multiple classes define conflicting methods: the last class in the inheritance chain takes precedence silently. Finally, It does not support more advanced plugin lifecycle management (e.g., enabling/disabling plugins dynamically, multiple isolated plugins, or plugin priorities).
