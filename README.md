@@ -1,5 +1,14 @@
-# python-bootstrapper
-A minimal Python package showing how to bootstrap and auto-discover local plugin modules at runtime using a two-phase binding approach
+<h1 align="center">
+    python-bootstrapper
+</h1>
+
+<h3 align="center">
+    A minimal Python package showing how to bootstrap and auto-discover local plugin modules at runtime using a two-phase binding approach
+</h3>
+
+<div align="center">
+    <img src="https://raw.githubusercontent.com/aslan-ng/python-bootstrapper/refs/heads/main/assets/bootstrap-1.png" alt="python-bootstrapper" width="500">
+</div>
 
 ## Features
 
