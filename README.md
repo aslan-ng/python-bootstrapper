@@ -126,7 +126,12 @@ MyClass.my_method(my_inputs)
 ...
 ```
 
-For more usage examples, refer to the [`examples`](https://github.com/aslan-ng/KeepDelta/tree/main/examples) folder in the project repository.
+For more usage examples, refer to the [`examples`](https://github.com/aslan-ng/python-bootstrapper/tree/main/examples) folder in the project repository.
 
 ## Limitations
+
 This is a minimalistic, intentionally simple approach to enable plugin capability by local file discovery. The bootstrapper expects a **single plugin file** (`<plugin_name>.py`) placed next to your script. All plugin classes inside the file must inherit from the base class, and they will be **merged automatically into a single class at runtime**. No error reporting is provided if multiple classes define conflicting methods: the last class in the inheritance chain takes precedence silently. Finally, It does not support more advanced plugin lifecycle management (e.g., enabling/disabling plugins dynamically, multiple isolated plugins, or plugin priorities).
+
+## License
+
+Distributed under the MIT License. See [`LICENSE.txt`](https://github.com/aslan-ng/python-bootstrapper/blob/main/LICENSE) for more information.
