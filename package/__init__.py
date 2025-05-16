@@ -23,10 +23,18 @@ Refer to the README for more details on how to use it.
 import os, inspect, importlib.util, sys
 
 # Import the core Math class from the main module as the fallback base implementation
+"""
+Change this import to the actual class you want to use as the base
+from .main import <ClassName> as _BasePackage
+"""
 from .main import Shape as _BasePackage
 
 # Provisional binding: make the base <BaseClass> class immediately available
 # so that user plugins can import it without causing a circular import
+"""
+Change this import to the actual class you want to use as the base
+<ClassName> = _BasePackage
+"""
 Shape = _BasePackage
 
 # plugin_name: the filename (without .py) of the local plugin to load
@@ -55,10 +63,8 @@ def _discover_local(plugin_name: str):
             return obj
     return _BasePackage
 
-# Override the Plugin name in this package with the discovered subclass
+"""
+Override the Plugin name in this package with the discovered subclass
+Change this to the actual class you want to use as the base and the plugin filename
+"""
 Shape = _discover_local(plugin_name="customize")
-
-# Now `Plugin` refers to either your local subclass or the base <BaseClass>.
-# Example:
-#   from bootstrapper import Plugin
-#   result = Plugin().process(data)
